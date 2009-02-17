@@ -3,5 +3,6 @@
         <module path="megavideo.js"/>
         <module path="youtube.js"/>
         <module path="xhamster.js"/>
+        <module path="youporn.js"/>
     </modules>
 </configuration>
