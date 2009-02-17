@@ -1,5 +1,6 @@
 <configuration>
     <modules path="modules">
         <module path="megavideo.js"/>
+        <module path="youtube.js"/>
     </modules>
 </configuration>
