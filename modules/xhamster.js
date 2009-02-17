@@ -12,11 +12,11 @@
 
 require("System/Net/Protocol/HTTP/Simple");
 
-jsdl.module.Youtube = Class.create({
+jsdl.module.xHamster = Class.create({
     constructor: function (url) {
         this._html           = HTTP.Get(url);
-        this._attributes     = jsdl.module.Youtube.parseAttributes(this._html);
-        this._attributes.url = jsdl.module.Youtube.directURL(this._html);
+        this._attributes     = jsdl.module.xHamster.parseAttributes(this._html);
+        this._attributes.url = jsdl.module.xHamster.directURL(this._html);
     },
 
     methods: {
@@ -31,22 +31,25 @@ jsdl.module.Youtube = Class.create({
 
     static: {
         parseAttributes: function (html) {
-            var attributes   = /swfArgs\s*=\s*(\{.*?);\n/.exec(html)[1].evalJSON();
-            attributes.title = /<meta name="title" content="(.*?)"/.exec(html)[1];
+            var attributes = new Object;
+
+            attributes.file   = /addVariable\('file','(.+?)'/.exec(html)[1];
+            attributes.server = /addVariable\('srv','(.+?)'/.exec(html)[1];
+
             return attributes;
         },
 
         directURL: function (html) {
-            var attributes = jsdl.module.Youtube.parseAttributes(html);
+            var attributes = jsdl.module.xHamster.parseAttributes(html);
 
-            return "http://www.youtube.com/get_video?video_id={0}&t={1}".format([
-                attributes.video_id, attributes.t
+            return "http://dl{0}.xhamster.com/flv2/{1}".format([
+                attributes.server, attributes.file
             ]);
         }
     }
 });
 
-jsdl.addModule(/youtube\.com\/watch\?/, function (url) {
-    return new jsdl.module.Youtube(url);
+jsdl.addModule(/xhamster\.com\/movies/, function (url) {
+    return new jsdl.module.xHamster(url);
 });
 

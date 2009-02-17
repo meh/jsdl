@@ -12,6 +12,7 @@
 
 jsdl         = new Object;
 jsdl.modules = new Object;
+jsdl.module  = new Object;
 
 jsdl.addModule = function (match, exec) {
     jsdl.modules[match] = exec;

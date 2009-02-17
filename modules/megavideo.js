@@ -12,11 +12,11 @@
 
 require("System/Net/Protocol/HTTP/Simple");
 
-var Megavideo = Class.create({
+jsdl.module.Megavideo = Class.create({
     constructor: function (url) {
         this._id         = /\?v=(.+)$/.exec(url)[1];
-        this._xml        = new XML(XML.clean(Megavideo.getXML(this._id)));
-        this._attributes = Megavideo.parseAttributes(this._xml.ROW);
+        this._xml        = new XML(XML.clean(jsdl.module.Megavideo.getXML(this._id)));
+        this._attributes = jsdl.module.Megavideo.parseAttributes(this._xml.ROW);
     },
 
     methods: {
@@ -59,7 +59,7 @@ var Megavideo = Class.create({
 
             attributes.url = "http://www{0}.megavideo.com/files/{1}/".format([
                 attributes.server,
-                Megavideo.decrypt(attributes.string, attributes.keys[0], attributes.keys[1])
+                jsdl.module.Megavideo.decrypt(attributes.string, attributes.keys[0], attributes.keys[1])
             ]);
 
             return attributes;
@@ -71,7 +71,6 @@ var Megavideo = Class.create({
             ].join('').toArray();
 
             var values = new Array;
-
             for (let i = 0; i < 384; i++) {
                 key1 = ((key1 * 11) + 77213) % 81371;
                 key2 = ((key2 * 17) + 92717) % 192811;
@@ -103,5 +102,6 @@ var Megavideo = Class.create({
 });
 
 jsdl.addModule(/megavideo\.com\/\?v=.+$/, function (url) {
-    return new Megavideo(url);
+    return new jsdl.module.Megavideo(url);
 });
+

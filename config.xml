@@ -2,5 +2,6 @@
     <modules path="modules">
         <module path="megavideo.js"/>
         <module path="youtube.js"/>
+        <module path="xhamster.js"/>
     </modules>
 </configuration>
