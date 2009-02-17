@@ -15,7 +15,7 @@ if (arguments.length < 1) {
     die("You have to pass at least a url.");
 }
 
-require("jsdl");
+require("core");
 jsdl.init("config.xml");
 
 print(jsdl.Download.url(arguments[0]));
