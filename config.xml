@@ -1,0 +1,5 @@
+<configuration>
+    <modules path="modules">
+        <module path="megavideo.js"/>
+    </modules>
+</configuration>

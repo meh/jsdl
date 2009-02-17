@@ -1,0 +1,21 @@
+#! /usr/bin/env ljs
+/*********************************************************************
+ *           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE             *
+ *                   Version 2, December 2004                        *
+ *                                                                   *
+ *  Copyleft meh.                                                    *
+ *                                                                   *
+ *           DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE             *
+ *  TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION  *
+ *                                                                   *
+ *  0. You just DO WHAT THE FUCK YOU WANT TO.                        *
+ *********************************************************************/
+
+if (arguments.length < 1) {
+    die("You have to pass at least a url.");
+}
+
+require("jsdl");
+jsdl.init("config.xml");
+
+print(jsdl.Download.url(arguments[0]));
