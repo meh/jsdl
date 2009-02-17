@@ -1,6 +1,7 @@
 <configuration>
     <modules path="modules">
         <module path="megavideo.js"/>
+        <module path="megaporn.js"/>
         <module path="youtube.js"/>
         <module path="xhamster.js"/>
         <module path="youporn.js"/>
