@@ -10,11 +10,11 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.                        *
  *********************************************************************/
 
-require("System/IO/File");
+require("System/FileSystem/File");
 
 jsdl.Config = Class.create({
     constructor: function (file) {
-        var file = new File(file, "r");
+        var file = new File(file, File.Mode.Read);
         this.xml = new XML(file.readToEnd());
         file.close();
     }
