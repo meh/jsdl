@@ -18,15 +18,16 @@ jsdl.addModule = function (match, exec) {
     jsdl.modules[match] = exec;
 }
 
+require("System/FileSystem/Directory");
 require("config.js");
 require("download.js")
 
 jsdl.init = function (conf) {
     this.config = new jsdl.Config(conf);
 
-    var directory = this.config.xml.modules.@path;
-    for each (let path in this.config.xml.modules.module.@path) {
-        include("{0}/{1}".format([directory, path]));
+    var directory = new Directory(this.config.xml.modulesDirectory.@path);
+    for each (let module in directory.select(function (file) file.name.test(/\.js/))) {
+        include(module.path);
     }
 }
 

@@ -16,7 +16,6 @@ jsdl.Config = Class.create({
     constructor: function (file) {
         var file = new File(file, File.Mode.Read);
         this.xml = new XML(file.readToEnd());
-        file.close();
     }
 });
 
