@@ -26,8 +26,8 @@ jsdl.init = function (conf) {
     this.config = new jsdl.Config(conf);
 
     var directory = new Directory(this.config.xml.modulesDirectory.@path);
-    for each (let module in directory.select(function (file) file.name.test(/\.js/))) {
+    directory.select(function (file) file.name.test(/\.js$/)).each(function (module) {
         include(module.path);
-    }
+    });
 }
 

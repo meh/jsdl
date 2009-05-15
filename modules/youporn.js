@@ -10,7 +10,7 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.                        *
  *********************************************************************/
 
-require("System/Net/Protocol/HTTP/Simple");
+require("System/Network/Protocol/HTTP/Simple");
 
 jsdl.module.Youporn = Class.create({
     constructor: function (url) {
@@ -31,7 +31,7 @@ jsdl.module.Youporn = Class.create({
     static: {
         parseAttributes: function (html) {
             var attributes = new Object;
-            attributes.url = /"(.*\.flv)/.exec(html)[1];
+            attributes.url = /(http.*?download.*)"/.exec(html)[1];
             return attributes;
         },
 

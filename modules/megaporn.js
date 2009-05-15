@@ -10,7 +10,7 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO.                        *
  *********************************************************************/
 
-require("System/Net/Protocol/HTTP/Simple");
+require("System/Network/Protocol/HTTP/Simple");
 
 jsdl.module.Megaporn = Class.create({
     constructor: function (url) {
